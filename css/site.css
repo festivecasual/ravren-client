@@ -1,0 +1,16 @@
+body {
+  font-family: 'Titillium Web', sans-serif;
+
+  margin-left: 1em;
+  margin-top: 1em;
+}
+
+#content {
+  position: absolute;
+  top: 3em;
+  left: 1em;
+}
+
+#line {
+  font-family: 'Ubuntu Mono', monospace;
+}
