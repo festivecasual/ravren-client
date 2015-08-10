@@ -47,6 +47,7 @@ body {
 #command {
   color: #888;
   margin-top: 2em;
+  height: 2em;
 }
 
 #line {

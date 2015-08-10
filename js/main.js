@@ -57,8 +57,12 @@ $().ready(function(){
       line.hide();
       tip.fadeIn();
     } else if (event.which == KEYCODE_ENTER) {
-      var cmd = $('<p></p>').html(escapeHtml(line.val())).hide();
-      stream.prepend(cmd.slideDown(1000));
+      var cmd = line.val();
+      stream.prepend($('<p></p>').height(0).animate({
+        height: '2em'
+      }, 200, 'swing', function(){
+        $(this).html(escapeHtml(cmd));
+      }));
       line.fadeOut(400, function(){
         line.val('');
         tip.fadeIn();
