@@ -6,9 +6,8 @@ body {
 }
 
 #infoport {
-  position: absolute;
-  top: 3em;
-  left: 1em;
+  margin-top: 3em;
+  margin-left: 1em;
   width: 40vw;
   height: 60vh;
   overflow-y: scroll;
@@ -25,4 +24,16 @@ body {
 
 #line {
   font-family: 'Ubuntu Mono', monospace;
+}
+
+#buttons {
+  list-style-type: none;
+}
+
+#buttons li {
+  border: 1px solid #888;
+  border-radius: 5px;
+  float: left;
+  margin-right: 5px;
+  padding: 2px 5px;
 }

@@ -3,6 +3,8 @@ var KEYCODE_BACKSPACE = 8;
 var KEYCODE_ENTER = 13;
 
 $().ready(function(){
+  $('#buttons li:first').css('background-color', '#bbc').css('color', '#fff');
+
   var command = $('#command');
   command.hide();
   var line = $('#line');
