@@ -41,6 +41,7 @@ $().ready(function(){
     }
     if (!line.is(':focus')) {
       line.val(line.val() + String.fromCharCode(event.which));
+      line[0].scrollLeft = line[0].scrollWidth;
     }
   });
 
