@@ -6,6 +6,24 @@ var KEYCODE_UP = 38;
 var KEYCODE_RIGHT = 39;
 var KEYCODE_DOWN = 40;
 
+// entityMap and escapeHtml are from https://github.com/janl/mustache.js
+// Copyright (c) 2009 Chris Wanstrath (Ruby)
+// Copyright (c) 2010-2014 Jan Lehnardt (JavaScript)
+// Copyright (c) 2010-2015 The mustache.js community
+var entityMap = {
+  '&': '&amp;',
+  '<': '&lt;',
+  '>': '&gt;',
+  '"': '&quot;',
+  "'": '&#39;',
+  '/': '&#x2F;'
+};
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"'\/]/g, function fromEntityMap (s) {
+    return entityMap[s];
+  });
+}
+
 $().ready(function(){
   $('#buttons li:first').css('background-color', '#bbc').css('color', '#fff');
 
@@ -38,7 +56,7 @@ $().ready(function(){
       line.hide();
       tip.fadeIn();
     } else if (event.which == KEYCODE_ENTER) {
-      var cmd = $('<p></p>').html(line.val()).hide();
+      var cmd = $('<p></p>').html(escapeHtml(line.val())).hide();
       stream.prepend(cmd.slideDown(1000));
       line.fadeOut(400, function(){
         line.val('');
