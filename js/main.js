@@ -26,31 +26,31 @@ $().ready(function(){
   });
 
   $(document).keydown(function(event){
-    if (event.keyCode == KEYCODE_ESCAPE) {
+    if (event.which == KEYCODE_ESCAPE) {
       line.val('');
       line.hide();
       tip.fadeIn();
       return;
-    } else if (event.keyCode == KEYCODE_ENTER) {
+    } else if (event.which == KEYCODE_ENTER) {
       line.fadeOut(400, function(){
         line.val('');
         tip.fadeIn();
       });
     } else if (!line.is(':focus')) {
-      if (event.keyCode == KEYCODE_BACKSPACE) {
+      if (event.which == KEYCODE_BACKSPACE) {
         line.val(line.val().slice(0, -1));
         event.preventDefault();
-      } else if (event.keyCode == KEYCODE_LEFT) {
+      } else if (event.which == KEYCODE_LEFT) {
         // LEFT ONE TAB
-      } else if (event.keyCode == KEYCODE_RIGHT) {
+      } else if (event.which == KEYCODE_RIGHT) {
         // RIGHT ONE TAB
-      } else if (event.keyCode == KEYCODE_UP) {
+      } else if (event.which == KEYCODE_UP) {
         infoport.animate({
-          scrollTop: Math.max(0, infoport.scrollTop() - 20)
+          scrollTop: Math.max(0, infoport.scrollTop() - 60)
         }, 100);
-      } else if (event.keyCode == KEYCODE_DOWN) {
+      } else if (event.which == KEYCODE_DOWN) {
         infoport.animate({
-          scrollTop: Math.min(infoport.scrollTop() + 20, infoport[0].scrollHeight - infoport[0].clientHeight)
+          scrollTop: Math.min(infoport.scrollTop() + 60, infoport[0].scrollHeight - infoport[0].clientHeight)
         }, 100);
       }
     }
