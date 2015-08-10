@@ -5,13 +5,14 @@ var KEYCODE_ENTER = 13;
 $().ready(function(){
   $('#buttons li:first').css('background-color', '#bbc').css('color', '#fff');
 
-  var command = $('#command');
-  command.hide();
   var line = $('#line');
+  var tip = $('#line_tip');
+  line.hide();
 
   $(document).keypress(function(event){
-    if (command.is(':hidden')) {
-      command.show();
+    if (line.is(':hidden')) {
+      line.show();
+      tip.hide();
     }
     if (!line.is(':focus')) {
       line.val(line.val() + String.fromCharCode(event.which));
@@ -22,21 +23,24 @@ $().ready(function(){
     
     if (event.keyCode == KEYCODE_ESCAPE) {
       line.val('');
-      command.hide();
+      line.hide();
+      tip.fadeIn();
       return;
     } else if (event.keyCode == KEYCODE_BACKSPACE && !line.is(':focus')) {
         line.val(line.val().slice(0, -1));
         event.preventDefault();
     } else if (event.keyCode == KEYCODE_ENTER) {
-      command.fadeOut(400, function(){
+      line.fadeOut(400, function(){
         line.val('');
+        tip.fadeIn();
       });
     }
   });
 
   $(document).keyup(function(){
     if (line.val() == '') {
-      command.hide();
+      line.hide();
+      tip.fadeIn();
     }
   });
 });

@@ -1,39 +1,61 @@
 body {
   font-family: 'Titillium Web', sans-serif;
 
-  margin-left: 1em;
-  margin-top: 1em;
+  margin: 1em;
 }
 
 #infoport {
-  margin-top: 3em;
+  margin-top: 2em;
   margin-left: 1em;
   width: 40vw;
-  height: 60vh;
+  height: calc(70vh);
   overflow-y: scroll;
   padding: 0 2em 1em 1em;
+  border-right: 1px solid #eee;
 }
 
 #infoport h1 {
   margin-top: 0;
 }
 
-#command {
-  color: #888;
-}
-
-#line {
-  font-family: 'Ubuntu Mono', monospace;
-}
-
 #buttons {
   list-style-type: none;
+  position: fixed;
+  bottom: 0;
+  padding-bottom: 1em;
 }
 
 #buttons li {
   border: 1px solid #888;
   border-radius: 5px;
-  float: left;
   margin-right: 5px;
   padding: 2px 5px;
+  display: inline-block;
+}
+
+.layout {
+  display: block;
+  float: left;
+}
+
+#live {
+  width: 40vw;
+  padding-left: 1em;
+  overflow-y: scroll;
+}
+
+#command {
+  color: #888;
+  margin-top: 2em;
+}
+
+#line {
+  font-family: 'Ubuntu Mono', monospace;
+  margin-left: 1em;
+  width: 90%;
+}
+
+#line_tip {
+  color: #bbb;
+  font-style: italic;
 }
