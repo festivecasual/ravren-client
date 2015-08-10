@@ -58,15 +58,15 @@ $().ready(function(){
       tip.fadeIn();
     } else if (event.which == KEYCODE_ENTER) {
       var cmd = line.val();
-      stream.prepend($('<p></p>').height(0).animate({
-        height: '2em'
-      }, 200, 'swing', function(){
-        $(this).html(escapeHtml(cmd));
-      }));
-      line.fadeOut(400, function(){
-        line.val('');
-        tip.fadeIn();
-      });
+      if (cmd) {
+        stream.prepend($('<p></p>').height(0).animate({
+          height: '2em'
+        }, 200, 'swing', function(){
+          $(this).html(escapeHtml(cmd));
+        }));
+        line.val('').hide();
+        tip.show();
+      }
     } else if (!line.is(':focus')) {
       if (event.which == KEYCODE_BACKSPACE) {
         line.val(line.val().slice(0, -1));
