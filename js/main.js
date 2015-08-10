@@ -14,6 +14,7 @@ $().ready(function(){
   line.hide();
 
   var infoport = $('#infoport');
+  var stream = $('#stream');
 
   $(document).keypress(function(event){
     if (line.is(':hidden')) {
@@ -37,6 +38,8 @@ $().ready(function(){
       line.hide();
       tip.fadeIn();
     } else if (event.which == KEYCODE_ENTER) {
+      var cmd = $('<p></p>').html(line.val()).hide();
+      stream.prepend(cmd.slideDown(1000));
       line.fadeOut(400, function(){
         line.val('');
         tip.fadeIn();
