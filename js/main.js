@@ -79,10 +79,12 @@ $().ready(function(){
         infoport.animate({
           scrollTop: Math.max(0, infoport.scrollTop() - 60)
         }, 100);
+        event.preventDefault();
       } else if (event.which == KEYCODE_DOWN) {
         infoport.animate({
           scrollTop: Math.min(infoport.scrollTop() + 60, infoport[0].scrollHeight - infoport[0].clientHeight)
         }, 100);
+        event.preventDefault();
       }
     }
   });
