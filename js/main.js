@@ -17,12 +17,18 @@ $().ready(function(){
 
   $(document).keypress(function(event){
     if (line.is(':hidden')) {
-      line.show();
       tip.hide();
+      line.show();
     }
     if (!line.is(':focus')) {
       line.val(line.val() + String.fromCharCode(event.which));
     }
+  });
+
+  tip.click(function(event){
+    tip.hide();
+    line.show();
+    line.focus();
   });
 
   $(document).keydown(function(event){
@@ -30,7 +36,6 @@ $().ready(function(){
       line.val('');
       line.hide();
       tip.fadeIn();
-      return;
     } else if (event.which == KEYCODE_ENTER) {
       line.fadeOut(400, function(){
         line.val('');
