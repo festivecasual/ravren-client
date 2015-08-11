@@ -25,15 +25,50 @@ function escapeHtml(s) {
 }
 
 $().ready(function(){
-  $('#buttons li:first').css('background-color', '#bbc').css('color', '#fff');
-
-  $('#buttons li[data-friend=combat]').fadeTo(0, 0);
-
   var line = $('#line');
   var tip = $('#line_tip');
   line.hide();
 
   var info = $('#info');
+
+  $('#buttons li:first').css('background-color', '#bbc').css('color', '#fff');
+
+  $('#buttons li[data-friend=combat]').fadeTo(0, 0.1);
+
+  function cycleVerbs(verbs, target) {
+    tip.hide();
+    line.show();
+    for (var i = 0; i < verbs.length; i++) {
+      if (line.val() == verbs[i] + ' ' + target) {
+        line.val(verbs[++i % verbs.length] + ' ' + target);
+        line.select();
+        return;
+      }
+    }
+    line.val(verbs[0] + ' ' + target);
+    line.select();
+  }
+
+  $('.room-exit').click(function(event){
+    tip.hide();
+    line.show();
+    line.val('go ' + $(this).data('short'));
+    var enter = $.Event('keydown');
+    enter.which = enter.keyCode = KEYCODE_ENTER;
+    $(document).trigger(enter);
+  });
+
+  $('.room-door').click(function(event){
+    cycleVerbs(['open', 'unlock', 'look'], $(this).data('short'));
+  });
+
+  $('.room-item').click(function(event){
+    cycleVerbs(['look', 'get', 'open'], $(this).data('short'));
+  });
+
+  $('.room-denizen, .room-player').click(function(event){
+    cycleVerbs(['look', 'attack'], $(this).data('short'));
+  });
 
   $(document).keypress(function(event){
     if (line.is(':hidden')) {
@@ -64,7 +99,7 @@ $().ready(function(){
         $('#stream').prepend($('<p></p>').height(0).animate({
           height: '2em'
         }, 200, 'swing', function(){
-          $(this).html(escapeHtml(cmd));
+          $(this).html(escapeHtml(cmd)).height('auto').css('min-height', '2em');
         }));
         line.val('').hide();
         tip.show();

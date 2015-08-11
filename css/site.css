@@ -11,7 +11,7 @@ body {
 }
 
 #info {
-  width: 40vw;
+  width: 50vw;
   overflow-y: scroll;
   border-right: 1px solid #eee;
 }
@@ -24,6 +24,32 @@ body {
 
 #infoport h1 {
   margin-top: 0;
+}
+
+#infoport span {
+  cursor: pointer;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.room-exit {
+  color: #643;
+}
+
+.room-door {
+  color: #436;
+}
+
+.room-item {
+  color: #464;
+}
+
+.room-denizen {
+  color: #004;
+}
+
+.room-player {
+  color: #0aa;
 }
 
 #buttons {
@@ -42,7 +68,7 @@ body {
 }
 
 #live {
-  width: 40vw;
+  width: 30vw;
   padding-left: 1em;
   overflow-y: scroll;
 }
