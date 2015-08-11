@@ -27,6 +27,8 @@ function escapeHtml(s) {
 $().ready(function(){
   $('#buttons li:first').css('background-color', '#bbc').css('color', '#fff');
 
+  $('#buttons li[data-friend=combat]').fadeTo(0, 0);
+
   var line = $('#line');
   var tip = $('#line_tip');
   line.hide();
