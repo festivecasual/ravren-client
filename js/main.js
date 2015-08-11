@@ -77,12 +77,12 @@ $().ready(function(){
         // RIGHT ONE TAB
       } else if (event.which == KEYCODE_UP) {
         info.animate({
-          scrollTop: Math.max(0, info.scrollTop() - 60)
+          scrollTop: Math.max(0, info.scrollTop() - 150)
         }, 100);
         event.preventDefault();
       } else if (event.which == KEYCODE_DOWN) {
         info.animate({
-          scrollTop: Math.min(info.scrollTop() + 60, info[0].scrollHeight - info[0].clientHeight)
+          scrollTop: Math.min(info.scrollTop() + 150, info[0].scrollHeight - info[0].clientHeight)
         }, 100);
         event.preventDefault();
       }
