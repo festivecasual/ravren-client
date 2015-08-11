@@ -31,13 +31,13 @@ $().ready(function(){
   var tip = $('#line_tip');
   line.hide();
 
-  var infoport = $('#infoport');
-  var stream = $('#stream');
+  var info = $('#info');
 
   $(document).keypress(function(event){
     if (line.is(':hidden')) {
       tip.hide();
       line.show();
+      $('#live').scrollTop(0);
     }
     if (!line.is(':focus')) {
       line.val(line.val() + String.fromCharCode(event.which));
@@ -59,7 +59,7 @@ $().ready(function(){
     } else if (event.which == KEYCODE_ENTER) {
       var cmd = line.val();
       if (cmd) {
-        stream.prepend($('<p></p>').height(0).animate({
+        $('#stream').prepend($('<p></p>').height(0).animate({
           height: '2em'
         }, 200, 'swing', function(){
           $(this).html(escapeHtml(cmd));
@@ -76,13 +76,13 @@ $().ready(function(){
       } else if (event.which == KEYCODE_RIGHT) {
         // RIGHT ONE TAB
       } else if (event.which == KEYCODE_UP) {
-        infoport.animate({
-          scrollTop: Math.max(0, infoport.scrollTop() - 60)
+        info.animate({
+          scrollTop: Math.max(0, info.scrollTop() - 60)
         }, 100);
         event.preventDefault();
       } else if (event.which == KEYCODE_DOWN) {
-        infoport.animate({
-          scrollTop: Math.min(infoport.scrollTop() + 60, infoport[0].scrollHeight - infoport[0].clientHeight)
+        info.animate({
+          scrollTop: Math.min(info.scrollTop() + 60, info[0].scrollHeight - info[0].clientHeight)
         }, 100);
         event.preventDefault();
       }

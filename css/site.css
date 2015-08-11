@@ -4,14 +4,22 @@ body {
   margin: 1em;
 }
 
+.layout {
+  display: block;
+  float: left;
+  height: calc(100vh - 7em);
+}
+
+#info {
+  width: 40vw;
+  overflow-y: scroll;
+  border-right: 1px solid #eee;
+}
+
 #infoport {
   margin-top: 2em;
   margin-left: 1em;
-  width: 40vw;
-  height: 70vh;
-  overflow-y: scroll;
   padding: 0 2em 1em 1em;
-  border-right: 1px solid #eee;
 }
 
 #infoport h1 {
@@ -33,16 +41,15 @@ body {
   display: inline-block;
 }
 
-.layout {
-  display: block;
-  float: left;
-}
-
 #live {
   width: 40vw;
-  height: 70vh;
   padding-left: 1em;
   overflow-y: scroll;
+}
+
+#stream p {
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 #command {
