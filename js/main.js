@@ -29,7 +29,29 @@ $().ready(function(){
   var tip = $('#line_tip');
   line.hide();
 
-  var info = $('#info');
+  var infoSly = new Sly('#info', {
+    slidee: '#infoport',
+    scrollBy: 60,
+    scrollTrap: true
+  }).init();
+
+  var liveSly = new Sly('#live', {
+    slidee: '#live_contents',
+    scrollBy: 60,
+    scrollTrap: true
+  }).init();
+
+  // Resizing code concept taken from Andrew Hedges on StackOverflow
+  // Link: http://stackoverflow.com/a/2969091
+  // Profile: http://stackoverflow.com/users/11577/andrew-hedges
+  var resizeTimer;
+  $(window).resize(function(){
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function(){
+      infoSly.reload();
+      liveSly.reload();
+    }, 100);
+  });
 
   $('#buttons li:first').css('background-color', '#bbc').css('color', '#fff');
 
@@ -74,7 +96,7 @@ $().ready(function(){
     if (line.is(':hidden')) {
       tip.hide();
       line.show();
-      $('#live').scrollTop(0);
+      liveSly.slideTo(0);
     }
     if (!line.is(':focus')) {
       line.val(line.val() + String.fromCharCode(event.which));
@@ -100,6 +122,7 @@ $().ready(function(){
           height: '2em'
         }, 200, 'swing', function(){
           $(this).html(escapeHtml(cmd)).height('auto').css('min-height', '2em');
+          liveSly.reload();
         }));
         line.val('').hide();
         tip.show();
@@ -113,14 +136,10 @@ $().ready(function(){
       } else if (event.which == KEYCODE_RIGHT) {
         // RIGHT ONE TAB
       } else if (event.which == KEYCODE_UP) {
-        info.animate({
-          scrollTop: Math.max(0, info.scrollTop() - 150)
-        }, 100);
+        infoSly.slideBy(-100);
         event.preventDefault();
       } else if (event.which == KEYCODE_DOWN) {
-        info.animate({
-          scrollTop: Math.min(info.scrollTop() + 150, info[0].scrollHeight - info[0].clientHeight)
-        }, 100);
+        infoSly.slideBy(100);
         event.preventDefault();
       }
     }

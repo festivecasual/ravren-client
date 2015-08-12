@@ -1,6 +1,5 @@
 body {
   font-family: 'Titillium Web', sans-serif;
-
   margin: 1em;
 }
 
@@ -12,13 +11,10 @@ body {
 
 #info {
   width: 50vw;
-  overflow-y: scroll;
   border-right: 1px solid #eee;
 }
 
 #infoport {
-  margin-top: 2em;
-  margin-left: 1em;
   padding: 0 2em 1em 1em;
 }
 
@@ -52,11 +48,14 @@ body {
   color: #0aa;
 }
 
-#buttons {
-  list-style-type: none;
+#controlbar {
   position: fixed;
   bottom: 0;
   padding-bottom: 1em;
+}
+
+#buttons {
+  list-style-type: none;
 }
 
 #buttons li {
@@ -70,7 +69,6 @@ body {
 #live {
   width: 30vw;
   padding-left: 1em;
-  overflow-y: scroll;
 }
 
 #stream p {

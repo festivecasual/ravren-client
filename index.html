@@ -48,7 +48,9 @@
           </p>
         </article>
       </section>
+    </div>
 
+    <div id="controlbar">
       <ul id="buttons">
         <li data-friend="room">Room</li>
         <li data-friend="status">Status</li>
@@ -58,14 +60,19 @@
     </div>
 
     <div class="layout" id="live">
-      <div id="command">
-        <p id="line_tip">Type a command...</p>
-        <input type="text" name="line" id="line"></div>
-      <div id="stream"></div>
+      <div id="live_contents">
+        <div id="command">
+          <p id="line_tip">Type a command...</p>
+          <input type="text" name="line" id="line">
+        </div>
+        <div id="stream"></div>
+      </div>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.3.min.js"><\/script>')</script>
+
+    <script src="js/vendor/sly.min.js"></script>
 
     <script src="js/main.js"></script>
   </body>
