@@ -18,7 +18,7 @@
   <body>
     <div class="layout" id="info">
       <section id="infoport">
-        <article id="room">
+        <article id="info_room">
           <h1><span class="area">Ravren</span> <span class="divider">|</span> Lewtane Way</h1>
           <p>
             <strong>Exits:</strong>
@@ -47,15 +47,24 @@
             <span class="hotspot room-item" data-short="bread">a loaf of crusty bread</span>
           </p>
         </article>
+        <article id="info_status">
+          <p>[Player status information: next level, spells/skills, etc.]</p>
+        </article>
+        <article id="info_items">
+          <p>[Inventory listing]</p>
+        </article>
+        <article id="info_combat">
+          <p>[Live combat updates]</p>
+        </article>
       </section>
     </div>
 
     <div id="controlbar">
       <ul id="buttons">
-        <li data-friend="room">Room</li>
-        <li data-friend="status">Status</li>
-        <li data-friend="items">Items</li>
-        <li data-friend="combat">Combat</li>
+        <li data-friend="#info_room">Room</li>
+        <li data-friend="#info_status">Status</li>
+        <li data-friend="#info_items">Items</li>
+        <li data-friend="#info_combat">Combat</li>
       </ul>
       <span id="player">Remyn</span>
       <span id="status">

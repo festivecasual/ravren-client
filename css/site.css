@@ -76,6 +76,12 @@ body {
   margin-right: 5px;
   padding: 2px 5px;
   display: inline-block;
+  cursor: pointer;
+}
+
+#buttons li.activated {
+  background-color: #bbc;
+  color: #fff;
 }
 
 #player {

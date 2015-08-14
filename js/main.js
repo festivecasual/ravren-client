@@ -53,9 +53,16 @@ $().ready(function(){
     }, 100);
   });
 
-  $('#buttons li:first').css('background-color', '#bbc').css('color', '#fff');
+  $('#buttons li').click(function(event){
+    if ($(this).css('opacity') < 1.0) {
+      return;
+    }
+    $(this).addClass('activated').siblings().removeClass('activated');
+    $($(this).data('friend')).show().siblings().hide();
+  });
+  $('#buttons li:first').click();
 
-  $('#buttons li[data-friend=combat]').fadeTo(0, 0.1);
+  $('#buttons li:contains(Combat)').fadeTo(0, 0.1);
 
   function typeCommand(cmd, submit) {
     tip.hide();
@@ -129,9 +136,39 @@ $().ready(function(){
         line.val(line.val().slice(0, -1));
         event.preventDefault();
       } else if (event.which == KEYCODE_LEFT) {
-        // LEFT ONE TAB
+        var activated = $('#buttons li.activated');
+        var located = false;
+        activated.prevAll().each(function(){
+          if ($(this).css('opacity') == 1.0) {
+            $(this).click();
+            located = true;
+            return false;
+          }
+        });
+        if (located) return;
+        $(activated.nextAll().get().reverse()).each(function(){
+          if ($(this).css('opacity') == 1.0) {
+            $(this).click();
+            return false;
+          }
+        });
       } else if (event.which == KEYCODE_RIGHT) {
-        // RIGHT ONE TAB
+        var activated = $('#buttons li.activated');
+        var located = false;
+        activated.nextAll().each(function(){
+          if ($(this).css('opacity') == 1.0) {
+            $(this).click();
+            located = true;
+            return false;
+          }
+        });
+        if (located) return;
+        $(activated.prevAll().get().reverse()).each(function(){
+          if ($(this).css('opacity') == 1.0) {
+            $(this).click();
+            return false;
+          }
+        });
       } else if (event.which == KEYCODE_UP) {
         infoSly.slideBy(-100);
         event.preventDefault();
