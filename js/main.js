@@ -112,9 +112,7 @@ $().ready(function(){
 
   $(document).keydown(function(event){
     if (event.which == KEYCODE_ESCAPE) {
-      line.val('');
-      line.hide();
-      tip.fadeIn();
+      resetLineInput(true);
     } else if (event.which == KEYCODE_ENTER) {
       var cmd = line.val();
       if (cmd) {
@@ -124,8 +122,7 @@ $().ready(function(){
           $(this).html(escapeHtml(cmd)).height('auto').css('min-height', '2em');
           liveSly.reload();
         }));
-        line.val('').hide();
-        tip.show();
+        resetLineInput(true);
       }
     } else if (!line.is(':focus')) {
       if (event.which == KEYCODE_BACKSPACE) {
@@ -145,10 +142,13 @@ $().ready(function(){
     }
   });
 
-  $(document).keyup(function(){
-    if (line.val() == '') {
-      line.hide();
+  function resetLineInput(force){
+    if (force || line.val() == '') {
+      line.val('').hide();
       tip.fadeIn();
     }
-  });
+  }
+
+  $(document).keyup(function(event){resetLineInput();});
+  line.blur(function(event){resetLineInput();});
 });
