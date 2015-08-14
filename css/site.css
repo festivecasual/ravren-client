@@ -66,6 +66,8 @@ body {
 
 #buttons {
   list-style-type: none;
+  margin-right: 3em;
+  display: inline-block;
 }
 
 #buttons li {
@@ -74,6 +76,24 @@ body {
   margin-right: 5px;
   padding: 2px 5px;
   display: inline-block;
+}
+
+#player {
+  font-size: 16pt;
+  font-weight: bold;
+  margin-right: 1em;
+  display: inline-block;
+}
+
+#status {
+  color: #777;
+  font-size: 10pt;
+  display: inline-block;
+}
+
+#status .stat {
+  color: #000;
+  font-weight: bold;
 }
 
 #live {
