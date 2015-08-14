@@ -57,27 +57,31 @@ $().ready(function(){
 
   $('#buttons li[data-friend=combat]').fadeTo(0, 0.1);
 
-  function cycleVerbs(verbs, target) {
+  function typeCommand(cmd, submit) {
     tip.hide();
     line.show();
+    line.val(cmd);
+    line.select();
+    liveSly.slideTo(0);
+    if (submit) {
+      var enter = $.Event('keydown');
+      enter.which = enter.keyCode = KEYCODE_ENTER;
+      $(document).trigger(enter);
+    }
+  }
+
+  function cycleVerbs(verbs, target) {
     for (var i = 0; i < verbs.length; i++) {
       if (line.val() == verbs[i] + ' ' + target) {
-        line.val(verbs[++i % verbs.length] + ' ' + target);
-        line.select();
+        typeCommand(verbs[++i % verbs.length] + ' ' + target);
         return;
       }
     }
-    line.val(verbs[0] + ' ' + target);
-    line.select();
+    typeCommand(verbs[0] + ' ' + target);
   }
 
   $('.room-exit').click(function(event){
-    tip.hide();
-    line.show();
-    line.val('go ' + $(this).data('short'));
-    var enter = $.Event('keydown');
-    enter.which = enter.keyCode = KEYCODE_ENTER;
-    $(document).trigger(enter);
+    typeCommand('go ' + $(this).data('short'), true);
   });
 
   $('.room-door').click(function(event){
@@ -94,9 +98,7 @@ $().ready(function(){
 
   $(document).keypress(function(event){
     if (line.is(':hidden')) {
-      tip.hide();
-      line.show();
-      liveSly.slideTo(0);
+      typeCommand('');
     }
     if (!line.is(':focus')) {
       line.val(line.val() + String.fromCharCode(event.which));
@@ -105,9 +107,7 @@ $().ready(function(){
   });
 
   tip.click(function(event){
-    tip.hide();
-    line.show();
-    line.focus();
+    typeCommand('');
   });
 
   $(document).keydown(function(event){
